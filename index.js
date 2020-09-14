@@ -76,7 +76,7 @@ const fetchData = () =>
           axios
             .get(`${process.env.EMON_URL}/input/post`, {
               params: {
-                node: "solis",
+                node: process.env.EMON_NODE,
                 fulljson: {
                   power: lastResponse.power,
                   time: Date.now(),
