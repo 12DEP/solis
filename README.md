@@ -1,5 +1,22 @@
 # Solis inverter JSON API
-A simple NodeJS application to read Solis PV inverter data using HTTP interface, extract and serve data as JSON formatted as follows:
+
+A simple NodeJS application to read Solis PV inverter data using HTTP interface, extract and serve data as JSON, then send power data to emoncms energy monitoring system.
+
+CREDIT - this is just a bit of extra code over the excellent code from https://github.com/fss/solis-inverter to connect the data to the openenergymonitor emoncms.org system.
+
+# USAGE
+
+- clone this repo
+- run `npm i` to install dependencies (requires node.js to be installed)
+- copy the `.env-sample` and save as `.env`
+- edit the .env file to match your requirements
+  - you can get your api key from https://emoncms.org/user/view (or your installation address)
+  - the solis IP address will depend on your local wifi network. Your wifi router should have an admin page with a list of connected devices. Try going the different IP address in a browser window - the ginlong will pop up a login, default username password is admin/admin.
+- run `npm start`
+
+# Full output from wifi logging stick
+
+Note - this version only sends 'power' and 'time' to the emoncms.
 
 ```json
 {
@@ -37,7 +54,3 @@ A simple NodeJS application to read Solis PV inverter data using HTTP interface,
   }
 }
 ```
- 
- Usage:
- 
-`node index.js --address <INVERTER_IP_ADDRESS> --username <INVERTER_WEB_USERNAME> --password <INVERTER_WEB_PASSWORD> --port <LISTEN_PORT> --interval <REFRESH_INTERVAL (milliseconds, optional, default = 30000)>`
